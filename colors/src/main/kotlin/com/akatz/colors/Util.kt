@@ -1,6 +1,8 @@
 package com.akatz.colors
 
 import androidx.compose.ui.graphics.Color
+import androidx.core.graphics.toColorInt
+import kotlin.math.max
 
 fun colorGradient(
     startColor: Color,
@@ -29,7 +31,7 @@ fun multiGradient(
     colors: List<Color>,
     stepsBetween: Int
 ): List<Color> {
-    val totalColorsPerList = stepsBetween + 2
+    val totalColorsPerList = max(stepsBetween, 0) + 2
     val colorList = mutableListOf(colors[0])
     for (i in 0..< colors.lastIndex) {
         val gradient = colorGradient(colors[i], colors[i + 1], totalColorsPerList)
@@ -37,3 +39,10 @@ fun multiGradient(
     }
     return colorList
 }
+
+fun multiGradientSize(colorListSize: Int, stepsBetween: Int): Int =
+    (colorListSize - 1) * stepsBetween + colorListSize
+
+fun List<Color>.multiGradientSize(stepsBetween: Int) = ((this.size - 1) * stepsBetween) + this.size
+
+fun String.toColor(): Color = Color(this.toColorInt())
