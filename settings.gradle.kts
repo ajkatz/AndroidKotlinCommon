@@ -22,3 +22,5 @@ dependencyResolutionManagement {
 rootProject.name = "My Application"
 include(":testenv")
 include(":colors")
+include(":compose")
+include(":platform")

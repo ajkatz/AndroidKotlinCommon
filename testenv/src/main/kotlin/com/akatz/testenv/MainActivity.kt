@@ -1,9 +1,5 @@
 package com.akatz.testenv
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -14,16 +10,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.akatz.colors.colorGradient
+import androidx.lifecycle.ViewModel
 import com.akatz.colors.multiGradient
+import com.akatz.compose.activity.BaseComposeActivity
 
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            GradientTest()
-        }
+class MainActivity : BaseComposeActivity<ViewModel>() {
+
+    @Composable
+    override fun BaseContent(viewModel: ViewModel?) {
+        GradientTest()
     }
 }
 
