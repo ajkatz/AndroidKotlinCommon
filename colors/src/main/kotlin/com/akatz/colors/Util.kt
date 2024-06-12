@@ -45,4 +45,24 @@ fun multiGradientSize(colorListSize: Int, stepsBetween: Int): Int =
 
 fun List<Color>.multiGradientSize(stepsBetween: Int) = ((this.size - 1) * stepsBetween) + this.size
 
+fun String.parseColor(): Color {
+    // Remove the '#' character if it's present
+    val color = this.removePrefix("#")
+
+    // Parse the color string based on its length
+    return when (color.length) {
+        6 -> {
+            // Color without alpha, assume alpha is FF
+            val colorInt = color.toLong(16) or 0x00000000FF000000
+            Color(colorInt.toULong())
+        }
+        8 -> {
+            // Color with alpha
+            val colorInt = color.toLong(16)
+            Color(colorInt.toULong())
+        }
+        else -> throw IllegalArgumentException("Invalid color string format")
+    }
+}
+
 fun String.toColor(): Color = Color(this.toColorInt())
