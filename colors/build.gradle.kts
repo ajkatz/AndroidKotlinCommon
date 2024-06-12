@@ -32,11 +32,10 @@ android {
 }
 
 dependencies {
-    implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
-    implementation(libs.material)
+    implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.ui.graphics.android)
-
+    implementation(libs.material)
     testImplementation(libs.junit)
     testImplementation(kotlin("test"))
     implementation(kotlin("script-runtime"))

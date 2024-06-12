@@ -13,6 +13,7 @@ material = "1.12.0"
 lifecycleRuntimeKtx = "2.8.1"
 composeBom = "2024.05.00"
 uiGraphicsAndroid = "1.6.7"
+tracing = "1.2.0"
 
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
@@ -23,6 +24,7 @@ androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-co
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
 androidx-material3 = { module = "androidx.compose.material3:material3" }
+androidx-tracing = { module = "androidx.tracing:tracing", version.ref = "tracing" }
 androidx-ui = { module = "androidx.compose.ui:ui" }
 androidx-ui-graphics = { module = "androidx.compose.ui:ui-graphics" }
 androidx-ui-graphics-android = { group = "androidx.compose.ui", name = "ui-graphics-android", version.ref = "uiGraphicsAndroid" }

@@ -27,7 +27,6 @@ import kotlinx.coroutines.flow.update
 class MainActivity : BaseComposeActivity<GradientViewModel>(
     viewModelSetup = ViewModelSetup(clazz = GradientViewModel::class.java),
 ) {
-
     @Composable
     override fun BaseContent(viewModel: GradientViewModel?) {
         GradientTest(viewModel)
