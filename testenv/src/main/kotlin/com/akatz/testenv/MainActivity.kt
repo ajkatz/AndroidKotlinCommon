@@ -20,6 +20,7 @@ import com.akatz.colors.multiGradient
 import com.akatz.compose.activity.BaseComposeActivity
 import com.akatz.compose.viewmodel.ViewModelSetup
 import com.akatz.compose.widget.IncrementalNumberSelector
+import com.akatz.platform.performance.Profiler
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
@@ -29,11 +30,14 @@ class MainActivity : BaseComposeActivity<GradientViewModel>(
 ) {
     @Composable
     override fun BaseContent(viewModel: GradientViewModel?) {
+        Profiler.beginSection("BaseContent")
         GradientTest(viewModel)
+        Profiler.endSection()
     }
 
     @Composable
     override fun GetFooterContent(viewModel: GradientViewModel?) {
+        Profiler.beginSection("GetFooterContent")
         val steps = viewModel?.steps?.collectAsState()?.value ?: 5
         val dpSize = viewModel?.dpSize?.collectAsState()?.value ?: 25
 
@@ -55,6 +59,7 @@ class MainActivity : BaseComposeActivity<GradientViewModel>(
                 decrementAction = { viewModel?.decrementDp() }
             )
         }
+        Profiler.endSection()
     }
 
     override fun getContentTitle(): String {

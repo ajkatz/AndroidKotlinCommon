@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.dp
 import com.akatz.compose.activity.content.DefaultFooter
 import com.akatz.compose.activity.content.DefaultHeader
 import com.akatz.compose.viewmodel.generateViewModel
+import com.akatz.platform.performance.AppStartProfiler
 import com.akatz.platform.performance.runProfiled
 
 private const val defaultHeaderHeight = 55
@@ -26,11 +27,17 @@ abstract class BaseComposeActivity<T : ViewModel>(
     private val footerHeightDp: Dp = defaultFooterHeight.dp
 ) : ComponentActivity() {
 
+    override fun onStart() {
+        super.onStart()
+        AppStartProfiler.end()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) = runProfiled(
         "${this::class.simpleName}.onCreate",
         200L
     ) {
         super.onCreate(savedInstanceState)
+        AppStartProfiler.pageLoad()
 
         val viewModel: T? = viewModelSetup?.let {
             generateViewModel(viewModelStoreOwner = this, setup = it)
