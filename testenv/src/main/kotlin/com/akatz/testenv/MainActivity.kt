@@ -17,6 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModel
 import com.akatz.colors.multiGradient
+import com.akatz.colors.Colors
 import com.akatz.compose.activity.BaseComposeActivity
 import com.akatz.compose.viewmodel.ViewModelSetup
 import com.akatz.compose.widget.IncrementalNumberSelector
@@ -114,7 +115,7 @@ class GradientViewModel: ViewModel() {
         return multiGradient(
             listOf(
                 Color.Red,
-                Color(255, 165,0),
+                Colors.orange,
                 Color.Yellow,
                 Color.Green,
                 Color.Blue,

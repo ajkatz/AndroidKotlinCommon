@@ -4,6 +4,10 @@ import android.annotation.SuppressLint
 import androidx.tracing.Trace
 import com.akatz.platform.logging.logDebug
 import com.akatz.platform.logging.logWarn
+import kotlin.time.Duration
+import kotlin.time.DurationUnit
+import kotlin.time.measureTime
+import kotlin.time.toDuration
 
 object Profiler {
     private var start = 0L
@@ -33,15 +37,12 @@ fun runProfiled(
     thresholdMs: Long? = null,
     block: () -> Unit)
 {
-    val start = System.currentTimeMillis()
-    Trace.beginSection(label)
-    try {
+    val duration = measureTime {
+        Trace.beginSection(label)
         block()
-    } finally {
         Trace.endSection()
-        val end = System.currentTimeMillis()
-        logTraceResult(start, end, thresholdMs, label)
     }
+    logTraceResult(duration, thresholdMs, label)
 }
 
 
@@ -52,16 +53,31 @@ internal fun logTraceResult(
     thresholdMs: Long?,
     label: String
 ) {
-    val timeMs = end - start
-    if (thresholdMs != null && timeMs >= thresholdMs) {
+    logTraceResult(
+        createDurationMs(start, end),
+        thresholdMs,
+        label)
+}
+
+internal fun logTraceResult(
+    durationMs: Duration,
+    thresholdMs: Long?,
+    label: String
+) {
+    if (thresholdMs != null && durationMs.inWholeMilliseconds >= thresholdMs) {
         logWarn(
-            "$label took $timeMs ms (expected: ${thresholdMs}ms",
+            "$label took ${durationMs.inWholeMilliseconds} ms (expected: ${thresholdMs}ms",
             tagPostfix = "_profiler"
         )
     } else {
         logDebug(
-            "${label} took ${end - start} ms",
+            "$label took ${durationMs.inWholeMilliseconds} ms",
             tagPostfix = "_profiler"
         )
     }
+}
+
+internal fun createDurationMs(start: Long, end: Long): Duration {
+    val durationMs = end - start
+    return durationMs.toDuration(DurationUnit.MILLISECONDS)
 }

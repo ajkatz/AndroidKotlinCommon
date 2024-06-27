@@ -21,7 +21,7 @@ import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.akatz.colors.background_grey
+import com.akatz.colors.Colors
 
 @Composable
 fun IncrementalNumberSelector(
@@ -52,9 +52,9 @@ fun IncrementalNumberSelector(
                 Button(
                     modifier = Modifier.scale(1f),
                     colors = ButtonColors(
-                        containerColor = background_grey,
+                        containerColor = Colors.background_grey,
                         contentColor = Color.Black,
-                        disabledContainerColor = background_grey,
+                        disabledContainerColor = Colors.background_grey,
                         disabledContentColor = Color.Black
                     ),
                     onClick = decrementAction) {
@@ -65,9 +65,9 @@ fun IncrementalNumberSelector(
                 )
                 Button(modifier = Modifier.scale(1f),
                     colors = ButtonColors(
-                        containerColor = background_grey,
+                        containerColor = Colors.background_grey,
                         contentColor = Color.Black,
-                        disabledContainerColor = background_grey,
+                        disabledContainerColor = Colors.background_grey,
                         disabledContentColor = Color.Black
                     ), onClick = incrementAction) {
                     Text(text = ">")

@@ -9,7 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.Dp
-import com.akatz.colors.background_grey
+import com.akatz.colors.Colors
 
 @Composable
 fun BoxScope.DefaultFooter(height: Dp, rowContent: @Composable BoxScope.() -> Unit) {
@@ -17,7 +17,7 @@ fun BoxScope.DefaultFooter(height: Dp, rowContent: @Composable BoxScope.() -> Un
         modifier = Modifier
             .fillMaxWidth()
             .height(height)
-            .background(background_grey)
+            .background(Colors.background_grey)
             .align(Alignment.BottomCenter)
     ) {
         rowContent()

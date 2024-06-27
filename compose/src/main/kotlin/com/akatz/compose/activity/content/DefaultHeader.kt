@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.sp
-import com.akatz.colors.background_grey
+import com.akatz.colors.Colors
 
 @Composable
 fun DefaultHeader(height: Dp, title: String, headerContent: @Composable () -> Unit = {
@@ -19,14 +19,14 @@ fun DefaultHeader(height: Dp, title: String, headerContent: @Composable () -> Un
         modifier = Modifier.fillMaxSize(),
         text = title,
         textAlign = TextAlign.Center,
-        fontSize = 42.sp
+        fontSize = 42.sp,
     )
 }) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
             .height(height)
-            .background(background_grey)
+            .background(Colors.background_grey)
     ) {
         headerContent()
     }

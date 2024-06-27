@@ -7,13 +7,13 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
-import androidx.lifecycle.ViewModel
-import com.akatz.compose.viewmodel.ViewModelSetup
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.ViewModel
 import com.akatz.compose.activity.content.DefaultFooter
 import com.akatz.compose.activity.content.DefaultHeader
+import com.akatz.compose.viewmodel.ViewModelSetup
 import com.akatz.compose.viewmodel.generateViewModel
 import com.akatz.platform.performance.AppStartProfiler
 import com.akatz.platform.performance.runProfiled
